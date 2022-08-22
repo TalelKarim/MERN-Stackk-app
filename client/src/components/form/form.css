@@ -1,0 +1,19 @@
+input{
+ margin-bottom: 15px;
+}
+
+.photo2{
+  width: 100%;
+  font-size: 12px;
+
+ }
+
+#submit{
+    margin-left:36%;
+    margin-top:10px;
+}
+
+
+label{
+    font-family: 'Poppins';
+}
