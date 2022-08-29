@@ -8,11 +8,11 @@ import { faTrash} from '@fortawesome/free-solid-svg-icons';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import './card.css';
 import video from '../../Assets/videos/shutter.mp4'
-import image from '../../Assets/images/profile.jpg'
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import{deletePost} from '../../actions/Cards'
+import { deleteVideo } from '../../actions/Videos';
+import { deletePhoto } from '../../actions/Photos';
 
 const CardBody = styled.div`
 width: 400px;
@@ -140,6 +140,8 @@ export default function Card(props) {
     setOpen(prevOpen => !prevOpen)
   }
 
+
+   
   return (
     <CardBody
       isMenuOpen={isOpen}
@@ -174,6 +176,8 @@ export default function Card(props) {
                   <div className="delete"
                     onClick={() => {
                       dispatch(deletePost(props.id))
+                      dispatch(deletePhoto(props.identifier))
+                      dispatch(deleteVideo(props.identifier))
                      }}>
                       <FontAwesomeIcon 
                            icon={faTrash}
@@ -189,7 +193,7 @@ export default function Card(props) {
         >
              <Photo>
                  <img className='photo'
-                      src ={image}
+                      src ={props.imageLink}
                       alt='photo de profil' />
              </Photo>
 

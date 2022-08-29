@@ -1,6 +1,11 @@
 import mongoose from 'mongoose';
 
 const cardSchema = mongoose.Schema({
+  identifier:{
+      type:String,
+      required: true
+  },
+
   Name: {
       type:String,
       required: true
@@ -31,14 +36,19 @@ const cardSchema = mongoose.Schema({
       required: false
   },
   
-  file:{
-      type: Object,
+  VideoUrl:{
+      type:String,
       required: false
   },
 
-  Video:{
-      type:String,
-      required:false
+  imageLink: {
+      type: String,
+      required: false
+  },
+
+  VideoLink: {
+      type: String,
+      required: false
   },
 
   FeedBack:{

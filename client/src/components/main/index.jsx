@@ -47,10 +47,13 @@ export default function Main(props) {
                        posts.map((post) => {
                          return <Card key={post._id} 
                               id= {post._id}
+                              identifier ={post.identifier}
                               nom ={post.Name}
                               talent = {post.Talent}
                               currentId={props.currentId}
                               setCurrentId = {props.setCurrentId}
+                              imageLink = {post.imageLink}
+                              videoLink =  {post.videoLink}
                          />
                        })
 

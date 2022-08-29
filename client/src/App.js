@@ -9,6 +9,8 @@ import { createGlobalStyle } from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import {getPosts} from './actions/Cards'
+import { getPhotos } from './actions/Photos'
+import  {getVideos} from './actions/Videos'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 
@@ -46,13 +48,27 @@ export default function App() {
   const posts = useSelector((state) => {
     return state.posts.data
  })
+
+
  
+ const photos = useSelector((state) => {
+   return state.photos
+ })
+
+ const videos = useSelector((state) => {
+   return state.videos
+ })
+
 
   useEffect(() => {
        dispatch(getPosts());
   }, [dispatch, posts])
  
- 
+  
+  useEffect(() => {
+    dispatch(getPhotos());
+}, [dispatch, photos])
+
  
   return (
     <>

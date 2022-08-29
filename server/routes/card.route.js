@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 // import cardController from '../controllers/card.controller.js';
 const router = express.Router();
 import Card from '../models/card.js'
-import Multer from '../middleware/multer-config.js'
 
 router.get('/',(req,res) => { 
     Card.find()
@@ -17,17 +16,16 @@ router.get('/',(req,res) => {
 )
 
 
-router.post('/',Multer, (req,res,next) => {
+router.post('/', (req,res,next) => {
     const card = new Card({
-        ...req.body,
-        imageUrl: `${req.protocol}://${req.get('host')}/assets/hello/`
+        ...req.body
     });
-    console.log(req.body)
     card.save()
       .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
       .catch(error => console.log(error.response) );
 }
 )
+
 
 router.patch('/:id',(req,res,next) => {
     const {id : _id} = req.params;

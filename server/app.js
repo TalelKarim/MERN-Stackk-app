@@ -3,6 +3,7 @@ import mongoose  from 'mongoose';
 import dotEnv from 'dotenv';
 import cors from 'cors';
 import  cardRouter from './routes/card.route.js';
+import uploadRouter from './routes/upload.route.js';
 import path from 'path'
 import fs from 'fs'
 import { dirname } from 'path';
@@ -18,7 +19,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/cards', cardRouter);
-app.use('/assets', express.static(path.join(__dirname, 'assets')))
+app.use('/',uploadRouter);
+app.use('/assets/images', express.static(path.join(__dirname, 'assets/images')))
+app.use('/assets/videos', express.static(path.join(__dirname, 'assets/videos')))
+
 const port = process.env.PORT || 8800
 // Database connection 
 mongoose.connect(process.env.CONNNECTION_STRING)
