@@ -21,6 +21,8 @@ padding-right:12px;
 padding-top:35px;
 padding-bottom: 15px;
 justify-content:flex-start;
+box-shadow: 0 5px 25px rgba(1 1 1/ 15% );
+
 `
 
 const Buttons = styled.div`

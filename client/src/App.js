@@ -4,7 +4,7 @@ import Nav from './components/nav'
 import Main from './components/main'
 import Form from './components/form'
 import styled from 'styled-components'
-import { BrowserRouter, route, routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { createGlobalStyle } from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
@@ -13,6 +13,9 @@ import { getPhotos } from './actions/Photos'
 import  {getVideos} from './actions/Videos'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
+import Footer from './components/Footer'
 
 const MainContainer = styled.div`
      width:100%;
@@ -32,6 +35,13 @@ const AppContainer = styled.div`
 
 `
 
+const AuthContainer = styled.div`
+ width: 100%;
+ height: auto;
+ display:flex;
+ justify-content: center;
+ align-items: flex-start;
+`
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -78,11 +88,16 @@ export default function App() {
          <GlobalStyle />
          <Head />
          <Nav />
-       <MainContainer>
-           <Main currentId={currentId} setCurrentId= {setCurrentId} />
-           <Form currentId = {currentId} setCurrentId= {setCurrentId}/>  
-       </MainContainer>
-        
+         <Routes>
+              <Route path='/' element={       <MainContainer>
+                                          <Main currentId={currentId} setCurrentId= {setCurrentId} />
+                                          <Form currentId = {currentId} setCurrentId= {setCurrentId}/>  
+                                      </MainContainer>} />
+              <Route path='/signup' element={ <AuthContainer> <SignUp /> </AuthContainer>       }/>    
+              <Route path='/login' element={  <AuthContainer> <Login /></AuthContainer>  }/>                                    
+          </Routes>
+
+       <Footer />
       </AppContainer>   
      
 
